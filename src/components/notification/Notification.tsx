@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import '@/assets/css/sytle.css';
 
 function Notification() {
-    const [messages, setMessages] = useState([]);
-
-    console.log(messages);
+    const [messages, setMessages] = useState<string[]>([]);
 
     useEffect(() => {
         const eventSource = new EventSource('http://localhost:8080/sse/subscribe');
@@ -14,23 +12,10 @@ function Notification() {
         };
 
         eventSource.addEventListener("event", async function (event) {
-            const res = await event.data;
-            console.log('Received message:', res);
-            setMessages((prevMessages) => [...prevMessages, res]);
+            const res = JSON.parse(event.data);
+            console.log('Receive Msg =', res);
+            setMessages((prevMessages) => [...prevMessages, res.content]);
         });
-
-        // eventSource.onmessage = async (event) => {
-        //     const res = await event.data;
-        //     console.log('Received message:', res);
-        //
-        //     try {
-        //         // 데이터가 JSON 문자열로 오기 때문에 JSON.parse 사용
-        //         const data = JSON.parse(res);
-        //         setMessages((prevMessages) => [...prevMessages, data]);
-        //     } catch (e) {
-        //         console.error('Error parsing data:', e);
-        //     }
-        // };
 
         eventSource.onerror = (error) => {
             console.error('EventSource failed:', error);
