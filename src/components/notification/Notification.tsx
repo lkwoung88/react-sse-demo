@@ -6,7 +6,7 @@ function Notification() {
 
     useEffect(() => {
         const requestUrl = import.meta.env.VITE_URL;
-        const eventSource = new EventSource(requestUrl+'/sse/subscribe');
+        const eventSource = new EventSource(requestUrl + '/sse/subscribe');
 
         eventSource.onopen = () => {
             console.log('SSE connection opened.');
