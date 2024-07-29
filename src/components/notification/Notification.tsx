@@ -5,7 +5,8 @@ function Notification() {
     const [messages, setMessages] = useState<string[]>([]);
 
     useEffect(() => {
-        const eventSource = new EventSource('http://localhost:8080/sse/subscribe');
+        const requestUrl = import.meta.env.VITE_URL;
+        const eventSource = new EventSource(requestUrl+'/sse/subscribe');
 
         eventSource.onopen = () => {
             console.log('SSE connection opened.');
