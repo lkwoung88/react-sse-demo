@@ -42,7 +42,9 @@ data:{"id":15623,"content":"msg = 15623","registerDate":"2024-07-30T22:50:06"}
 * `event` : 이벤트의 유형을 식별.
 * `data` : 메시지의 데이터 필드.
 * `id` : 객체의 마지막 이벤트 ID 값을 설정하는 이벤트 ID.
-* `retry` : 재연결 시간, 서버와의 연결이 끊어지면 브라우저는 재연결을 시도하기 전에 지정된 시간을 기다린다. (밀리초, 정수값)
+* `retry` : 재연결 시간, 서버와의 연결이 끊어지면 브라우저는 재연결을 시도하기 전에 지정된 시간을 기다린다. (밀리초, 정수값)       
+
+[Server-Sent Event](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)
 ---
 # EventSource 인스턴스
 
@@ -75,7 +77,9 @@ eventSource.onerror = (error) => {
 4. 서버 간의 연결을 닫기위해서 `.close()` 메서드를 사용한다.
 ``` ts
 eventSource.close();
-```
+```   
+   
+[EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource)
 ---
 # React + TypeScript + Vite
 
